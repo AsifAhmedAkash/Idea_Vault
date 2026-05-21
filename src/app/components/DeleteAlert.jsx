@@ -3,15 +3,14 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/dist/server/api-utils";
 
-export function DeleteAlert({ destination }) {
+export function DeleteAlert({ idea }) {
     const {
         _id,
-        destinationName,
-
-    } = destination;
+        ideaTitle,
+    } = idea;
 
     const handleDelete = async () => {
-        const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
+        const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${_id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
@@ -38,7 +37,7 @@ export function DeleteAlert({ destination }) {
                         </AlertDialog.Header>
                         <AlertDialog.Body>
                             <p>
-                                This will permanently delete <strong>{destinationName}</strong> and all of its
+                                This will permanently delete <strong>{ideaTitle}</strong> and all of its
                                 data. This action cannot be undone.
                             </p>
                         </AlertDialog.Body>

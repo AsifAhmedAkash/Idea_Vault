@@ -5,7 +5,26 @@ import { authClient } from '@/app/lib/auth-client';
 import { username } from 'better-auth/plugins';
 // import React from 'react';
 
-const BookingCard = ({ destination }) => {
+
+
+//sample data
+// "_id": "6a0f63842831527c23ae9077",
+// "ideaTitle": "DroneAid",
+// "shortDescription": "Emergency medical supply delivery via drones.",
+// "detailedDescription": "DroneAid leverages autonomous drones to deliver critical medical supplies to remote or disaster‑hit areas within minutes.",
+// "category": "Health",
+// "tags": [
+// "drones",
+// "logistics",
+// "emergency"
+// ],
+// "imageURL": "https://example.com/images/droneaid.jpg",
+// "estimatedBudget": 500000,
+// "targetAudience": "Hospitals, NGOs, disaster relief agencies",
+// "problemStatement": "Remote areas lack timely access to medical supplies during emergencies.",
+// "proposedSolution": "Deploy drones with smart routing to deliver medicines and equipment quickly."
+
+const BookingCard = ({ idea }) => {
 
     const {
         data: session,
@@ -21,28 +40,28 @@ const BookingCard = ({ destination }) => {
 
     const {
         _id,
-        price,
-        imageUrl,
-        destinationName,
+        estimatedBudget,
+        imageURL,
+        ideaTitle,
 
-    } = destination;
+    } = idea;
 
     const handlBooking = async () => {
 
         if (!user) return;
 
-        const bookingData = {
+        const ideaData = {
             userId: user.id,
             userImage: user.image,
             username: user.name,
             destination: _id,
-            destinationName,
-            price: price,
-            imageUrl,
+            destinationName: ideaTitle,
+            price: estimatedBudget,
+            imageUrl: imageURL,
             departureDate: new Date(departureDate)
         }
 
-        console.log("booking data", bookingData);
+        console.log("booking data", ideaData);
 
         const { data: tokenData } = await authClient.token()
         console.log(tokenData)
@@ -54,7 +73,7 @@ const BookingCard = ({ destination }) => {
                     'content-type': 'application/json',
                     authorization: `Bearer ${tokenData?.token}`
                 },
-                body: JSON.stringify(bookingData)
+                body: JSON.stringify(ideaData)
             }
         )
 
