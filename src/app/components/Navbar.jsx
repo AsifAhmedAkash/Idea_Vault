@@ -25,7 +25,7 @@ const Navbar = () => {
             <ul className='flex gap-3'>
                 <li><Link href={'/'}> Home </Link></li>
                 <li><Link href={'/ideas'}> Ideas </Link></li>
-                <li><Link href={'/my-bookings'}> My-Interactions </Link></li>
+                <li><Link href={'/my-interactions'}> My-Interactions </Link></li>
                 <li><Link href={'/add-destination'}> Add idea </Link></li>
             </ul>
 
