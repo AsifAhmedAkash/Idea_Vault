@@ -8,6 +8,9 @@ import { DeleteAlert } from "@/app/components/DeleteAlert";
 import BookingCard from "@/app/components/BookingCard";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
+import Commentsection from "@/app/components/Commentsection";
+
+import CommentForm from "@/app/components/CommentForm";
 
 
 //sample data
@@ -98,6 +101,14 @@ const IdeaDetailsPage = async ({ params }) => {
 
             <h1 className="font-bold text-xl">Overview</h1>
             <p>{detailedDescription}</p>
+
+
+            {/* comment section  */}
+
+            <h2 className="font-bold text-xl mt-6">Comments</h2>
+
+            <Commentsection ideaId={_id}></Commentsection>
+            {/* <CommentForm ideaId={_id}></CommentForm> */}
         </div>
     );
 };

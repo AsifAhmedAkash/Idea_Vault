@@ -4,7 +4,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { jwt } from "better-auth/plugins";
 
 const client = new MongoClient(process.env.MONGODB_URI);
-const db = client.db('wonderlust');
+const db = client.db('ideavault');
 
 
 export const auth = betterAuth({

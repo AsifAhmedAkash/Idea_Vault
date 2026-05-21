@@ -1,8 +1,10 @@
 'use client'
 import { Button, FieldError, Input, Label, TextArea, TextField, Select, ListBox } from '@heroui/react';
 import React from 'react';
+import { authClient } from '@/app/lib/auth-client';
 
 const addIdeaPage = () => {
+    const { data: session } = authClient.useSession();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -13,6 +15,8 @@ const addIdeaPage = () => {
         idea.tags = idea.tags.split(',').map(tag => tag.trim()).filter(Boolean);
         // Convert estimatedBudget to number
         idea.estimatedBudget = Number(idea.estimatedBudget);
+        // Attach logged-in user's ID
+        idea.creatorId = session?.user?.id;
 
         console.log(idea);
 
