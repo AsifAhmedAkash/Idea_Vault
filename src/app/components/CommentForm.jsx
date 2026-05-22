@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import { authClient } from '@/app/lib/auth-client'; // adjust path if needed
+import { authClient } from '@/app/lib/auth-client';
 import { toast } from 'react-toastify';
 
-const CommentForm = ({ ideaId, onCommentPosted }) => {
+const CommentForm = ({ ideaId, token, onCommentPosted }) => {
     const { data: session } = authClient.useSession();
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const CommentForm = ({ ideaId, onCommentPosted }) => {
         e.preventDefault();
 
         if (!session?.user?.id) {
-            alert("You must be logged in to comment.");
+            toast.error("You must be logged in to comment.");
             return;
         }
 
@@ -31,20 +31,23 @@ const CommentForm = ({ ideaId, onCommentPosted }) => {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
-                    // if verifyToken reads from Authorization header:
-                    // 'Authorization': `Bearer ${session.token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                credentials: 'include', // sends cookies — needed if verifyToken reads cookie
+                credentials: 'include',
                 body: JSON.stringify(commentData),
             });
 
-            const data = await res.json();
+            if (!res.ok) {
+                const err = await res.json();
+                throw new Error(err.message || 'Failed to post comment');
+            }
+
             onCommentPosted?.();
             setComment('');
             toast.success("Comment posted successfully!");
         } catch (err) {
             console.error("Failed to post comment:", err);
-            toast.error("Failed to post comment.");
+            toast.error(err.message || "Failed to post comment.");
         } finally {
             setLoading(false);
         }
@@ -60,12 +63,12 @@ const CommentForm = ({ ideaId, onCommentPosted }) => {
                     placeholder="Write your comment..."
                     required
                     rows={4}
-                    className="w-full border border-gray-300 rounded-2xl p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    className="w-full border border-gray-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white rounded-2xl p-3 resize-none focus:outline-none focus:ring-2 focus:ring-lime-500"
                 />
                 <button
                     type="submit"
                     disabled={loading}
-                    className="self-end bg-cyan-500 text-white px-6 py-2 rounded-xl hover:bg-cyan-600 disabled:opacity-50 transition"
+                    className="self-end bg-lime-600 text-white px-6 py-2 rounded-xl hover:bg-lime-700 disabled:opacity-50 transition"
                 >
                     {loading ? 'Posting...' : 'Post Comment'}
                 </button>

@@ -102,7 +102,7 @@ const IdeaDetailsPage = async ({ params }) => {
             {/* COMMENTS */}
             <div className="bg-white dark:bg-zinc-900 border border-[#e3e3dc] dark:border-zinc-800 rounded-2xl p-8">
                 <h2 className="text-xs uppercase tracking-widest text-[#4c6700] dark:text-lime-400 mb-6">Comments</h2>
-                <Commentsection ideaId={_id.toString()} />
+                <Commentsection ideaId={_id.toString()} token={token} />
             </div>
         </main>
     );

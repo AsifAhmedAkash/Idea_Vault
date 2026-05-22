@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 
-const CommentSection = ({ ideaId }) => {
+const CommentSection = ({ ideaId, token }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -11,16 +11,20 @@ const CommentSection = ({ ideaId }) => {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comment/${ideaId}`, {
                 credentials: 'include',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             });
             const data = await res.json();
-            const sorted = data.sort((a, b) => new Date(b.time) - new Date(a.time));
+            const list = Array.isArray(data) ? data : (data.comments ?? data.data ?? []);
+            const sorted = list.sort((a, b) => new Date(b.time) - new Date(a.time));
             setComments(sorted);
         } catch (err) {
             console.error("Failed to fetch comments:", err);
         } finally {
             setLoading(false);
         }
-    }, [ideaId]);
+    }, [ideaId, token]);
 
     useEffect(() => {
         if (ideaId) fetchComments();
@@ -28,7 +32,7 @@ const CommentSection = ({ ideaId }) => {
 
     return (
         <div className="space-y-6">
-            <CommentForm ideaId={ideaId} onCommentPosted={fetchComments} />
+            <CommentForm ideaId={ideaId} token={token} onCommentPosted={fetchComments} />
 
             <div className="space-y-4">
                 <h3 className="text-lg font-semibold">
@@ -43,6 +47,7 @@ const CommentSection = ({ ideaId }) => {
                         <CommentCard
                             key={comment._id}
                             comment={comment}
+                            token={token}
                             onUpdate={(updated) => setComments(prev => prev.map(c => c._id === updated._id ? updated : c))}
                             onDelete={(id) => setComments(prev => prev.filter(c => c._id !== id))}
                         />
