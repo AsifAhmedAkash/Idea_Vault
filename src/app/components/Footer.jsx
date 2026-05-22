@@ -19,13 +19,13 @@ export default function Footer() {
                     </p>
 
                     <div className="flex gap-3 mt-2">
-                        <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
+                        <a href="https://www.linkedin.com/in/asif-ahmed-akash/" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
                             <FaLinkedin />
                         </a>
                         <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
                             <FaXTwitter />
                         </a>
-                        <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
+                        <a href="https://www.instagram.com/asif_npc/" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
                             <FaInstagram />
                         </a>
                     </div>
@@ -37,7 +37,9 @@ export default function Footer() {
                     </h4>
 
                     <ul className="space-y-3 text-white/70">
-                        <li className="hover:text-white cursor-pointer">About Us</li>
+                        <li className="hover:text-white cursor-pointer">Tags</li>
+                        <li className="hover:text-white cursor-pointer">Categories</li>
+                        <li className="hover:text-white cursor-pointer"><a href="https://www.linkedin.com/in/asif-ahmed-akash/">About Us</a></li>
                         <li className="hover:text-white cursor-pointer">Innovation Journal</li>
                         <li className="hover:text-white cursor-pointer">Startup FAQ</li>
                     </ul>
