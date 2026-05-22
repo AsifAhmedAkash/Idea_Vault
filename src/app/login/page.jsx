@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@heroui/react";
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
     const searchParams = useSearchParams();
@@ -13,7 +14,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
 
     const handleGoogleSignIn = async () => {
         try {
@@ -22,13 +23,14 @@ const LoginPage = () => {
                 callbackURL: callbackUrl,
             });
         } catch (err) {
-            setError("Google sign in failed");
+            // setError("Google sign in failed");
+            toast.error("Google sign in failed");
         }
     };
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setError("");
+        // setError("");
         setLoading(true);
 
         const { data, error } = await authClient.signIn.email({ email, password });
@@ -36,11 +38,12 @@ const LoginPage = () => {
         setLoading(false);
 
         if (data) {
-            router.push(callbackUrl);
+            toast.success("Logged in successfully!");
+            setTimeout(() => router.push(callbackUrl), 1000);
         }
 
         if (error) {
-            setError(error.message || "Login failed");
+            toast.error(error.message || "Login failed");
         }
     };
 
@@ -74,12 +77,12 @@ const LoginPage = () => {
                             Access your account and continue building.
                         </p>
                     </div>
-
+                    {/* 
                     {error && (
                         <div className="mb-5 rounded-xl border border-red-200 dark:border-red-500/20 bg-red-100 dark:bg-red-500/10 p-3 text-sm text-red-700 dark:text-red-300">
                             {error}
                         </div>
-                    )}
+                    )} */}
 
                     <form onSubmit={onSubmit} className="space-y-5">
                         <div>

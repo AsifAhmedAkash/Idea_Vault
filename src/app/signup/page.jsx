@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -30,12 +31,12 @@ const SignUpPage = () => {
         setLoading(false);
 
         if (data) {
-            setSuccess("Account created!");
+            toast.success("Account created!");
             setTimeout(() => router.push("/"), 1200);
         }
 
         if (error) {
-            setError(error.message || "Signup failed");
+            toast.error(error.message || "Signup failed");
         }
     };
 
@@ -43,7 +44,7 @@ const SignUpPage = () => {
         try {
             await authClient.signIn.social({ provider: "google", callbackURL: "/" });
         } catch {
-            setError("Google signup failed");
+            toast.error("Google signup failed");
         }
     };
 

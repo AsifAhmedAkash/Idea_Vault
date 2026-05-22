@@ -2,6 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AuthToast from "./components/AuthToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +22,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: `${callbackUrl}?loggedIn=true`,
+      });
+    } catch (err) {
+      toast.error("Google sign in failed");
+    }
+  };
+
   return (
     <html
       lang="en"
@@ -27,8 +42,10 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
+        <AuthToast />
         {children}
         <Footer></Footer>
+        <ToastContainer position="top-right" autoClose={3000} />
       </body>
     </html>
   );

@@ -5,17 +5,18 @@ import { useState } from 'react';
 import {
     FiArrowLeft, FiArrowRight, FiImage, FiLoader, FiCheckCircle
 } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const AddIdeaPage = () => {
     const router = useRouter();
     const { data: session } = authClient.useSession();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setError("");
+        // setError("");
         setLoading(true);
 
         const formData = new FormData(e.currentTarget);
@@ -32,10 +33,11 @@ const AddIdeaPage = () => {
                 body: JSON.stringify(idea)
             });
             if (!res.ok) throw new Error("Failed to submit idea.");
+            toast.success("Idea submitted successfully!");
             setSuccess(true);
             setTimeout(() => router.push("/my-ideas"), 1200);
         } catch (err) {
-            setError(err.message || "Failed to submit idea. Please try again.");
+            toast.error(err.message || "Failed to submit idea. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -67,11 +69,11 @@ const AddIdeaPage = () => {
                     </p>
                 </header>
 
-                {error && (
+                {/* {error && (
                     <div className="mb-6 p-4 bg-red-100 dark:bg-red-950/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900 rounded-xl text-sm">
                         {error}
                     </div>
-                )}
+                )} */}
 
                 <form onSubmit={onSubmit} className="space-y-14">
 
