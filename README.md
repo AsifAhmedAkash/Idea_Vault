@@ -36,7 +36,7 @@ A full-stack platform for sharing, discovering, and collaborating on startup ide
 
 ## Project Structure
 
-```
+
 src/
 ├── app/
 │   ├── components/        # Navbar, Footer, IdeaCard, CommentCard, etc.
@@ -50,7 +50,7 @@ src/
 │   └── lib/
 │       ├── auth.ts        # Better Auth server config
 │       └── auth-client.ts # Better Auth client config
-```
+
 
 ---
 
