@@ -59,7 +59,7 @@ export default function TopInvestorSection() {
                         {/* IMAGe */}
                         <div className="md:w-1/2 h-64 md:h-auto">
                             <img
-                                src={investors[0].image}
+                                src="/assets/building.png"
                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
                                 alt="GreenHorizon Capital"
                             />
@@ -138,7 +138,7 @@ export default function TopInvestorSection() {
                             We seek long-term partners committed to ethical innovation and global impact.
                         </p>
 
-                        <Button className="mt-6 bg-secondary text-black font-medium">
+                        <Button className="mt-6 bg-lime-600 dark:bg-lime-500 px-8 font-semibold text-white dark:text-black transition-all duration-300 hover:scale-105">
                             Become a Partner
                         </Button>
 

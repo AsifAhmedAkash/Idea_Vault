@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@heroui/react";
+import Link from "next/link";
 import {
     FaArrowRight,
     FaChartLine,
@@ -210,13 +211,15 @@ export default function NewsComponent() {
                                     insights.
                                 </p>
 
-                                <Button
-                                    radius="full"
-                                    size="lg"
-                                    className="bg-lime-600 dark:bg-lime-500 px-8 font-semibold text-white dark:text-black transition-all duration-300 hover:scale-105"
-                                >
-                                    Add New Idea
-                                </Button>
+                                <Link href="/add-idea">
+                                    <Button
+                                        radius="full"
+                                        size="lg"
+                                        className="bg-lime-600 dark:bg-lime-500 px-8 font-semibold text-white dark:text-black transition-all duration-300 hover:scale-105"
+                                    >
+                                        Add New Idea
+                                    </Button>
+                                </Link>
                             </div>
 
                             {/* Icon Circle */}

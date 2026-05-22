@@ -33,7 +33,7 @@ const Page = () => {
             {/* HEADER */}
             <header className="text-center md:text-left mb-10">
                 <div className="inline-block px-4 py-1 rounded-full text-xs font-semibold mb-5 bg-lime-300 dark:bg-lime-900/50 text-lime-900 dark:text-lime-300">
-                    THE GALLERY
+                    IDEA GALLERY
                 </div>
                 <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
                     Explore Innovation
@@ -62,8 +62,8 @@ const Page = () => {
                             key={cat}
                             onClick={() => setCategory(cat)}
                             className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${category === cat
-                                    ? "bg-lime-700 text-white border-lime-700"
-                                    : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700 hover:border-lime-500"
+                                ? "bg-lime-700 text-white border-lime-700"
+                                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700 hover:border-lime-500"
                                 }`}
                         >
                             {cat}

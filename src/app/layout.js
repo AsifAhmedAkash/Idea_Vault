@@ -1,11 +1,13 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import "@/app/globals.css";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AuthToast from "./components/AuthToast";
-import { ThemeProvider } from "./components/ThemeProvider";
+import AuthToast from "@/app/components/AuthToast";
+import { ThemeProvider } from "@/app/components/ThemeProvider";
+import { Suspense } from "react";
+import ScrollToTop from "@/app/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,9 +45,12 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <Navbar></Navbar>
-          <AuthToast />
+          <Suspense fallback={null}>
+            <AuthToast />
+          </Suspense>
           {children}
           <Footer></Footer>
+          <ScrollToTop />
           <ToastContainer position="top-right" autoClose={3000} />
         </ThemeProvider>
       </body>

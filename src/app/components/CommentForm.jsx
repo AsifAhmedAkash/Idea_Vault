@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { authClient } from '@/app/lib/auth-client'; // adjust path if needed
+import { toast } from 'react-toastify';
 
 const CommentForm = ({ ideaId, onCommentPosted }) => {
     const { data: session } = authClient.useSession();
@@ -40,8 +41,10 @@ const CommentForm = ({ ideaId, onCommentPosted }) => {
             const data = await res.json();
             onCommentPosted?.();
             setComment('');
+            toast.success("Comment posted successfully!");
         } catch (err) {
             console.error("Failed to post comment:", err);
+            toast.error("Failed to post comment.");
         } finally {
             setLoading(false);
         }

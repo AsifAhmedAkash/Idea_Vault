@@ -6,15 +6,15 @@ import { useEffect, useRef, useState } from "react";
 const slides = [
     {
         title: "Grounded Ideas, High Stakes Growth",
-        image: "https://i.ibb.co.com/dwGTnnff/slide-1.jpg",
+        image: "/assets/growth.png",
     },
     {
         title: "Build Together. Grow Enduringly.",
-        image: "https://i.ibb.co.com/RpFtkcZf/slide-2.jpg",
+        image: "/assets/build_together.png",
     },
     {
         title: "Structured Success, Scalable Future",
-        image: "https://i.ibb.co.com/xPJ2DHs/slide-3.jpg",
+        image: "/assets/structured_success.png",
     },
 ];
 

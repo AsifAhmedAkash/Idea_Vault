@@ -54,7 +54,7 @@ export default function OurMissionComponent() {
                         </p>
 
                         <div className="flex gap-4 mt-8 flex-wrap">
-                            <Button className="bg-primary text-white">
+                            <Button className="bg-lime-600 dark:bg-lime-500 px-8 font-semibold text-white dark:text-black transition-all duration-300 hover:scale-105">
                                 Explore the Framework
                             </Button>
 
