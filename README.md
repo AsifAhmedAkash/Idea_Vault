@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```markdown
+# IdeaVault 💡
+
+A full-stack platform for sharing, discovering, and collaborating on startup ideas. Built with Next.js, Express, and MongoDB.
+
+---
+
+## Tech Stack
+
+**Frontend**
+- Next.js 15 (App Router)
+- Tailwind CSS
+- HeroUI
+- Better Auth (authentication)
+- React Toastify
+
+**Backend**
+- Node.js + Express
+- MongoDB (via native driver)
+- JWT verification middleware
+
+---
+
+## Features
+
+- 🔐 Email/password and Google OAuth authentication
+- 💡 Submit startup ideas with detailed fields
+- 🔍 Search ideas by title (case-insensitive regex) and filter by category
+- 📋 Personal dashboard — view your own ideas and comments
+- 💬 Comment on ideas with real-time updates (no page refresh)
+- ✏️ Edit and delete your own comments
+- 👤 Profile management (name and avatar)
+- 🔒 Protected routes with redirect to login + callback URL
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/        # Navbar, Footer, IdeaCard, CommentCard, etc.
+│   ├── ideas/             # Ideas gallery + [id] detail page
+│   ├── add-idea/          # Submit new idea
+│   ├── my-ideas/          # Creator's idea dashboard
+│   ├── my-interactions/   # User's comment history
+│   ├── profile/           # Edit profile
+│   ├── login/             # Login page
+│   ├── signup/            # Register page
+│   └── lib/
+│       ├── auth.ts        # Better Auth server config
+│       └── auth-client.ts # Better Auth client config
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
+- MongoDB database
+- Google OAuth credentials (optional)
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone `--change--`
+cd ideavault
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+# Frontend
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Backend
+cd server
+npm install
+```
 
-## Learn More
+### 3. Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+Create `.env` in the server folder:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+NEXT_PUBLIC_SERVER_URL=http://localhost:5000
+BETTER_AUTH_SECRET=your_secret_here
+BETTER_AUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Run the app
 
-## Deploy on Vercel
+```bash
+# Start backend
+cd server
+node index.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start frontend (in a new terminal)
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Visit `--change--`
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/idea` | ❌ | Get ideas (supports `?limit` and `?search` and `?category`) |
+| GET | `/idea/:id` | ✅ | Get single idea |
+| POST | `/idea` | ✅ | Create new idea |
+| GET | `/ideasbycreator/:creatorId` | ✅ | Get ideas by creator |
+| GET | `/ideaname/:id` | ❌ | Get idea title only |
+| GET | `/comment/:ideaId` | ❌ | Get comments for an idea |
+| POST | `/comment` | ✅ | Post a comment |
+| PATCH | `/comment/:id` | ✅ | Edit a comment |
+| DELETE | `/comment/:id` | ✅ | Delete a comment |
+| GET | `/commentbyuser/:userId` | ✅ | Get all comments by a user |
+
+---
+
+## Screenshots
+
+`--change--`
+
+---
+
+## License
+
+MIT
+```
