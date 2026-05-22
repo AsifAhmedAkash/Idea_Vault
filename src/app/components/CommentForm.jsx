@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { authClient } from '@/app/lib/auth-client'; // adjust path if needed
 
-const CommentForm = ({ ideaId }) => {
+const CommentForm = ({ ideaId, onCommentPosted }) => {
     const { data: session } = authClient.useSession();
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(false);
@@ -18,6 +18,7 @@ const CommentForm = ({ ideaId }) => {
         const commentData = {
             ideaId,
             userId: session.user.id,
+            userName: session.user.name,
             comment,
             like: 0,
             time: new Date().toISOString(),
@@ -37,8 +38,8 @@ const CommentForm = ({ ideaId }) => {
             });
 
             const data = await res.json();
-            console.log(data);
-            setComment(''); // clear form after submit
+            onCommentPosted?.();
+            setComment('');
         } catch (err) {
             console.error("Failed to post comment:", err);
         } finally {

@@ -26,7 +26,7 @@ export function DeleteAlert({ idea }) {
 
     return (
         <AlertDialog>
-            <Button className="text-red-500 rounded-xl" variant="outline">Delete</Button>
+            <Button className="text-white-500 rounded-xl" variant="danger">Delete</Button>
             <AlertDialog.Backdrop>
                 <AlertDialog.Container>
                     <AlertDialog.Dialog className="sm:max-w-[400px]">
