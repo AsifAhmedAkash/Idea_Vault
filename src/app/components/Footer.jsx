@@ -1,85 +1,102 @@
-const Footer = () => {
+"use client";
+
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+export default function Footer() {
     return (
-        <footer className="bg-black text-gray-400 px-6 md:px-16 py-16">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-12">
-                    <h1 className="text-6xl md:text-7xl font-bold text-white">
+        <footer className="w-full bg-[#394e00] text-white dark:bg-tertiary">
+
+            <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+                <div className="flex flex-col gap-5">
+                    <h2 className="text-2xl font-bold text-secondary">
                         IdeaVault
-                    </h1>
-                    <p className="mt-4 max-w-xl">
-                        Your gateway to extraordinary travel experiences around the world.
+                    </h2>
+
+                    <p className="text-sm text-white/70 leading-relaxed">
+                        Bridging the gap between startup ideas and structured venture capital through grounded innovation and trust.
                     </p>
-                </div>
 
-                {/* Grid Section */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-                    {/* Newsletter */}
-                    <div>
-                        <h3 className="text-white mb-3 tracking-wide">NEWSLETTER</h3>
-                        <p className="mb-4 text-sm">
-                            Subscribe for exclusive travel deals and inspiration.
-                        </p>
-
-                        <div className="flex items-center bg-gray-800 px-4 py-3">
-                            <input
-                                type="email"
-                                placeholder="Enter email"
-                                className="bg-transparent outline-none flex-1 text-sm"
-                            />
-                            <span className="text-white text-lg">↗</span>
-                        </div>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
-                        <ul className="space-y-2">
-                            <li className="hover:text-white cursor-pointer">Home</li>
-                            <li className="hover:text-white cursor-pointer">Destinations</li>
-                            <li className="hover:text-white cursor-pointer">My Bookings</li>
-                            <li className="hover:text-white cursor-pointer">My Profile</li>
-                        </ul>
-                    </div>
-
-                    {/* Support */}
-                    <div>
-                        <h3 className="text-white mb-3 tracking-wide">SUPPORT</h3>
-                        <ul className="space-y-2">
-                            <li className="hover:text-white cursor-pointer">Help Center</li>
-                            <li className="hover:text-white cursor-pointer">
-                                Terms of Service
-                            </li>
-                            <li className="hover:text-white cursor-pointer">
-                                Privacy Policy
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h3 className="text-white mb-3 tracking-wide">CONTACT US</h3>
-                        <ul className="space-y-2">
-                            <li>786 901 1622</li>
-                            <li>info@wandarland.com</li>
-                        </ul>
+                    <div className="flex gap-3 mt-2">
+                        <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
+                            <FaLinkedin />
+                        </a>
+                        <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
+                            <FaXTwitter />
+                        </a>
+                        <a className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition">
+                            <FaInstagram />
+                        </a>
                     </div>
                 </div>
 
-                {/* Bottom Section */}
-                <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-sm">
-                        © 2026 IdeaVault. All rights reserved.
+                <div>
+                    <h4 className="text-sm tracking-widest text-secondary mb-4">
+                        PLATFORM
+                    </h4>
+
+                    <ul className="space-y-3 text-white/70">
+                        <li className="hover:text-white cursor-pointer">About Us</li>
+                        <li className="hover:text-white cursor-pointer">Innovation Journal</li>
+                        <li className="hover:text-white cursor-pointer">Startup FAQ</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-sm tracking-widest text-secondary mb-4">
+                        LEGAL
+                    </h4>
+
+                    <ul className="space-y-3 text-white/70">
+                        <li className="hover:text-white cursor-pointer">Privacy Policy</li>
+                        <li className="hover:text-white cursor-pointer">Terms of Service</li>
+                        <li className="hover:text-white cursor-pointer">Contact Support</li>
+                    </ul>
+                </div>
+
+                {/* NEWSLETTER */}
+                <div>
+                    <h4 className="text-sm tracking-widest text-secondary mb-4">
+                        STAY CONNECTED
+                    </h4>
+
+                    <p className="text-white/70 text-sm mb-4">
+                        Get updates on innovation and investor opportunities.
                     </p>
 
-                    <div className="flex gap-5 mt-4 md:mt-0 text-white text-lg">
-                        <span className="cursor-pointer">X</span>
-                        <span className="cursor-pointer">in</span>
-                        <span className="cursor-pointer">◎</span>
+                    <form
+                        onSubmit={(e) => e.preventDefault()}
+                        className="flex flex-col gap-3"
+                    >
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-secondary"
+                        />
+
+                        <button
+                            type="submit"
+                            className="bg-secondary text-black font-semibold py-3 rounded-lg hover:scale-105 transition"
+                        >
+                            SUBSCRIBE
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            {/* BOTTOM BAR */}
+            <div className="border-t border-white/10 py-6 px-6 md:px-10">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
+
+                    <p>© 2026 IdeaVault. All rights reserved.</p>
+
+                    <div className="flex gap-6">
+                        <span className="flex items-center gap-2">🌐 English (US)</span>
+                        <span className="flex items-center gap-2">🔒 SOC2 Certified</span>
                     </div>
                 </div>
             </div>
         </footer>
     );
-};
-
-export default Footer;
+}
