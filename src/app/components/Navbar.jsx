@@ -27,6 +27,7 @@ const Navbar = () => {
                 <li><Link href={'/ideas'}> Ideas </Link></li>
                 <li><Link href={'/my-interactions'}> My-Interactions </Link></li>
                 <li><Link href={'/add-idea'}> Add idea </Link></li>
+                <li><Link href={'/my-ideas'}> My ideas </Link></li>
             </ul>
 
             <div>
