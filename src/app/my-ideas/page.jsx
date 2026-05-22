@@ -14,8 +14,7 @@ const MyIdeasPage = async () => {
     const ideas = await res.json();
 
     return (
-        <main className="max-w-6xl mx-auto px-6 md:px-12 py-20 bg-[#fafaf3] dark:bg-zinc-950 text-[#1a1c18] dark:text-zinc-50">
-
+        <main className="w-full px-6 md:px-16 py-20 bg-[#fafaf3] dark:bg-zinc-950 text-[#1a1c18] dark:text-zinc-50">
             {/* HEADER */}
             <header className="mb-16">
                 <span className="text-xs tracking-widest uppercase text-[#4c6700] dark:text-lime-400">
@@ -35,7 +34,8 @@ const MyIdeasPage = async () => {
                         className="group flex flex-col md:flex-row w-full bg-white dark:bg-zinc-900 border border-[#e3e3dc] dark:border-zinc-800 overflow-hidden hover:shadow-lg transition-all"
                     >
                         {/* IMAGE */}
-                        <div className="w-full md:w-72 shrink-0 relative min-h-[240px]">
+                        {/* IMAGE */}
+                        <div className="w-full md:w-96 shrink-0 relative min-h-[240px]">
                             <img
                                 src={idea.imageURL}
                                 alt={idea.ideaTitle}
