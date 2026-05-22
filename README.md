@@ -64,7 +64,7 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone `--change--`
+git clone https://github.com/AsifAhmedAkash/Idea_Vault
 cd ideavault
 ```
 
@@ -105,8 +105,8 @@ node index.js
 npm run dev
 ```
 
-Visit `--change--`
-
+Visit 
+https://ideavault-one-mu.vercel.app/
 ---
 
 ## API Endpoints
@@ -127,8 +127,9 @@ Visit `--change--`
 ---
 
 ## Screenshots
-
-`--change--`
+<img width="1357" height="888" alt="Screenshot 2026-05-22 182550" src="https://github.com/user-attachments/assets/513a415f-adcb-4da9-8590-3e7d1cf27e70" />
+<img width="1327" height="892" alt="Screenshot 2026-05-22 182620" src="https://github.com/user-attachments/assets/cda85e1d-a117-46c3-860b-1cc0c34e5d2c" />
+<img width="1324" height="895" alt="Screenshot 2026-05-22 182604" src="https://github.com/user-attachments/assets/2d0f08cf-e4f6-49ff-8b5f-385862565772" />
 
 ---
 
