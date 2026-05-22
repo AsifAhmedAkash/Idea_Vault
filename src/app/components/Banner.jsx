@@ -82,7 +82,7 @@ export default function Banner() {
                             </h1>
 
                             <p className="mt-6 text-black/70 dark:text-white/80 border-l-2 border-green-500 pl-4">
-                                Altravo bridges innovation and structured capital
+                                bridges innovation and structured capital
                                 for modern founders.
                             </p>
 

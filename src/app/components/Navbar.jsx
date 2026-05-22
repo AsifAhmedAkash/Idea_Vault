@@ -5,10 +5,13 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import { authClient } from "@/app/lib/auth-client";
 import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeProvider";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const { theme, toggleTheme } = useTheme();
     const pathname = usePathname();
 
     const { data: session, isPending } = authClient.useSession();
@@ -19,8 +22,8 @@ export default function Navbar() {
         <Link
             href={href}
             className={`transition-colors text-sm font-medium ${pathname === href
-                    ? "text-lime-700 dark:text-lime-400 font-semibold"
-                    : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                ? "text-lime-700 dark:text-lime-400 font-semibold"
+                : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
                 }`}
         >
             {label}
@@ -32,8 +35,8 @@ export default function Navbar() {
             href={href}
             onClick={() => setMobileOpen(false)}
             className={`font-medium transition-colors ${pathname === href
-                    ? "text-lime-700 dark:text-lime-400"
-                    : "text-zinc-800 dark:text-zinc-200 hover:text-lime-700"
+                ? "text-lime-700 dark:text-lime-400"
+                : "text-zinc-800 dark:text-zinc-200 hover:text-lime-700"
                 }`}
         >
             {label}
@@ -67,6 +70,12 @@ export default function Navbar() {
 
                     {/* ACTIONS */}
                     <div className="flex items-center gap-3">
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+                        >
+                            {theme === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
+                        </button>
                         {isPending ? (
                             <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse" />
                         ) : !isLoggedIn ? (
@@ -101,8 +110,8 @@ export default function Navbar() {
                                             href="/profile"
                                             onClick={() => setDropdownOpen(false)}
                                             className={`block px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 ${pathname === "/profile"
-                                                    ? "text-lime-700 dark:text-lime-400 font-semibold"
-                                                    : "text-zinc-700 dark:text-zinc-300"
+                                                ? "text-lime-700 dark:text-lime-400 font-semibold"
+                                                : "text-zinc-700 dark:text-zinc-300"
                                                 }`}
                                         >
                                             Profile Management
@@ -122,6 +131,8 @@ export default function Navbar() {
                             </div>
                         )}
 
+
+
                         <Button
                             isIconOnly
                             variant="light"
@@ -130,6 +141,7 @@ export default function Navbar() {
                         >
                             ☰
                         </Button>
+
                     </div>
                 </div>
             </header>
