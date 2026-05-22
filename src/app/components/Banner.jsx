@@ -10,7 +10,7 @@ const slides = [
     },
     {
         title: "Build Together. Grow Enduringly.",
-        image: "/assets/build_together.png",
+        image: "/assets/build_tog.png",
     },
     {
         title: "Structured Success, Scalable Future",
