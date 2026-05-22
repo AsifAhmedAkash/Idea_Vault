@@ -111,6 +111,8 @@ https://ideavault-one-mu.vercel.app/
 
 ## API Endpoints
 
+Backend server: https://ideavault-server-rho.vercel.app/
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | GET | `/idea` | ❌ | Get ideas (supports `?limit` and `?search` and `?category`) |
