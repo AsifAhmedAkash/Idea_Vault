@@ -35,7 +35,9 @@ const CommentSection = ({ ideaId }) => {
             }} />
 
             <div className="space-y-4">
-                <h3 className="text-lg font-semibold">{comments.length} Comment{comments.length !== 1 ? 's' : ''}</h3>
+                <p className="text-gray-500 text-sm">Comments for {ideaId}</p>
+                <h3 className="text-lg font-semibold">
+                    {comments.length} Comment{comments.length !== 1 ? 's' : ''}</h3>
                 {loading ? (
                     <p className="text-gray-400">Loading comments...</p>
                 ) : comments.length === 0 ? (
